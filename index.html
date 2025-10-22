@@ -22,9 +22,25 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="nav-btn" data-open-modal="login">Login</button>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="mobile-nav-link">Home</a></li>
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#schedule" class="mobile-nav-link">Jadwal</a></li>
+            <li><a href="#speakers" class="mobile-nav-link">Band</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+        <button class="nav-btn" data-open-modal="login">Login</button>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
