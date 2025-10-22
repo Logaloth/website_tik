@@ -296,20 +296,62 @@ function generateId() {
 }
 
 // ========================================
-// MOBILE MENU (Optional Enhancement)
+// MOBILE MENU
 // ========================================
 
 /**
- * Toggle mobile menu (bisa dikembangkan lebih lanjut)
+ * Toggle mobile menu
  */
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+// Open mobile menu
 if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', () => {
-        // Implementasi mobile menu
-        // Bisa ditambahkan overlay menu untuk mobile
-        alert('Mobile menu - Coming soon! 🎸');
+        mobileMenu.classList.add('active');
+        mobileMenuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
     });
 }
+
+// Close mobile menu when clicking close button
+if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+}
+
+// Close mobile menu when clicking overlay
+if (mobileMenuOverlay) {
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+}
+
+// Close mobile menu when clicking nav link
+mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        closeMobileMenu();
+        // Smooth scroll to section
+        const targetId = link.getAttribute('href').substring(1);
+        scrollToSection(targetId);
+    });
+});
+
+/**
+ * Close mobile menu function
+ */
+function closeMobileMenu() {
+    mobileMenu.classList.remove('active');
+    mobileMenuOverlay.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Close mobile menu with ESC key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+        closeMobileMenu();
+    }
+});
 
 // ========================================
 // KEYBOARD ACCESSIBILITY
